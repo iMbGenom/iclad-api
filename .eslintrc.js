@@ -19,7 +19,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     'space-after-function-name': 'off',
     'space-before-function-paren': 'off',
-    'eol-last': 'off'
+    'eol-last': 'on'
     // 'linebreak-style': ['error', 'unix'],
     // 'quotes': ['error', 'double'],
     // 'semi': ['error', 'always'],
