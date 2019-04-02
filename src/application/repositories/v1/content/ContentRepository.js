@@ -4,21 +4,19 @@ const BaseRepository = require('../BaseRepository')
 
 class BannerRepository extends BaseRepository {
     
-    async getContent(params) {
+    async getContent(query) {
         let _result = {}
         _result.success = false
         _result.data = {}
         _result.message = 'Failed'
         _result.error = {}
 
-        let query = {}
         /* Pagination */
-        const page = !params.Page ? parseInt(params.Page) : 1
+        const page = query.Page ? parseInt(query.Page) : 1
         const limit = 20
         const offset = (page - 1) * limit
-        delete params.Page
+        delete query.Page
         /* Pagination */
-        query = params
         query.Status = 1
 
         return new Promise((resolve, reject) => {
@@ -73,6 +71,30 @@ class BannerRepository extends BaseRepository {
                     _result.success = true
                     _result.message = 'Success'
                     _result.data = content
+                }
+                resolve(_result)
+            })
+        })
+    }
+
+    async updateContent(query, params) {
+        let _result = {}
+        _result.success = false
+        _result.data = {}
+        _result.message = 'Failed'
+        _result.error = {}
+
+        return new Promise((resolve, reject) => {
+            ContentModel.updateOneContent(query, params, (err, callback) => {
+                if (err) {
+                    _result.message = 'Failure fetch data'
+                    _result.error = err
+                }
+                if (callback.nModified == 1 && callback.ok == 1) {
+                    _result.return = true
+                    _result.message = 'Success'
+                } else {
+                    _result.message = 'Failed, there is no data have been modified'
                 }
                 resolve(_result)
             })

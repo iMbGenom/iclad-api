@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 const contentSchema = mongoose.Schema({
     Type: {
-        type: String
+        type: String,
+        required: true
     },
     CategoryId: {
         type: String
@@ -65,4 +66,8 @@ module.exports.getContent = (query, offset, limit, callback) => {
     }
 
     Content.find(query, callback).sort(urutan).skip(offset).limit(limit)
+}
+
+module.exports.updateOneContent = (query, content, callback) => {
+	Content.updateOne(query, content, callback)
 }

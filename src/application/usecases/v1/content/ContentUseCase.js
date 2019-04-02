@@ -18,6 +18,11 @@ class ContentUseCase {
         return new Response(data.success, data.message, data.data, data.error)
     }
 
+    async patchData() {
+        const data = await new ContentRepository().updateContent(this.req.params, this.req.body)
+        return new Response(data.success, data.message, data.data, data.error)
+    }
+
     async bannerPromo() {
         try {
             const getData = await new ContentRepository().getBannerPromo()
