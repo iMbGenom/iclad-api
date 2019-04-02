@@ -10,41 +10,37 @@ class ContentUseCase {
     }
 
     async getContent() {
-        const data = await new ContentRepository().getContent(this.req.query)
-        return new Response(data.success, data.message, data.data, data.error)
-    }
-
-    async addContent() {
-        const data = await new ContentRepository().addContent(this.req.body)
-        return new Response(data.success, data.message, data.data, data.error)
-    }
-
-    async putContent() {
-        const data = await new ContentRepository().updateContent(this.req.params, this.req.body)
-        return new Response(data.success, data.message, data.data, data.error)
-    }
-
-    async deleteContent() {
-        const data = await new ContentRepository().updateContent(this.req.params, this.deleteData)
-        return new Response(data.success, data.message, data.data, data.error)
-    }
-
-    async bannerPromo() {
         try {
-            const getData = await new ContentRepository().getBannerPromo()
-            return new Response(getData.success, getData.message, new Content(getData).dtoBannerList(), getData.error)
+            const data = await new ContentRepository().getContent(this.req.query)
+            return new Response(data.success, data.message, data.data, data.error)
         } catch (error) {
-            console.log(error)
             return new Response(false, 'error from exception', null, error)
         }
     }
 
-    async bannerBottom() {
+    async addContent() {
         try {
-            const getData = await new ContentRepository().getBannerBottom()
-            return new Response(getData.success, getData.message, new Content(getData).dtoBannerList(), getData.error)
+            const data = await new ContentRepository().addContent(this.req.body)
+            return new Response(data.success, data.message, data.data, data.error)
         } catch (error) {
-             console.log(error)
+            return new Response(false, 'error from exception', null, error)
+        }
+    }
+
+    async putContent() {
+        try {
+            const data = await new ContentRepository().updateContent(this.req.params, this.req.body)
+            return new Response(data.success, data.message, data.data, data.error)
+        } catch (error) {
+            return new Response(false, 'error from exception', null, error)
+        }
+    }
+
+    async deleteContent() {
+        try {
+            const data = await new ContentRepository().updateContent(this.req.params, this.deleteData)
+            return new Response(data.success, data.message, data.data, data.error)
+        } catch (error) {
             return new Response(false, 'error from exception', null, error)
         }
     }
