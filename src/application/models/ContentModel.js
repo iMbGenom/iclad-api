@@ -59,10 +59,10 @@ const contentSchema = mongoose.Schema({
 
 const Content = module.exports = mongoose.model('Content', contentSchema)
 
-module.exports.getAll = (query, callback, limit) => {
+module.exports.getContent = (query, offset, limit, callback) => {
     const urutan = {
-        datepublish_time: -1
+        CreatedAt: -1
     }
 
-    Content.find(query, callback).sort(urutan)
+    Content.find(query, callback).sort(urutan).skip(offset).limit(limit)
 }

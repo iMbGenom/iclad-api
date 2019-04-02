@@ -5,7 +5,37 @@ const BaseRepository = require('../BaseRepository')
 class BannerRepository extends BaseRepository {
     
     async getContent(params) {
-        console.log(params); return false
+        let _result = {}
+        _result.success = false
+        _result.data = {}
+        _result.message = 'Failed'
+        _result.error = {}
+
+        let query = {}
+        /* Pagination */
+        const page = !params.Page ? parseInt(params.Page) : 1
+        const limit = 20
+        const offset = (page - 1) * limit
+        delete params.Page
+        /* Pagination */
+        query = params
+        query.Status = 1
+
+        return new Promise((resolve, reject) => {
+            ContentModel.getContent(query, offset, limit, (err, contents) => {
+                if (err) {
+                    _result.error = err
+                } else {
+                    _result.success = true
+                    _result.message = 'Empty Data'
+                    _result.data = contents
+                    if (contents.length > 0) {
+                        _result.message = 'Success'
+                    }
+                }
+                resolve(_result)
+            })
+        })
     }
 
     async addContent(params) {
@@ -33,6 +63,7 @@ class BannerRepository extends BaseRepository {
         contentModel.UpdatedBy = params.UpdatedBy
         contentModel.CreatedAt = Math.round((new Date()).getTime() / 1000)
         contentModel.UpdatedAt = 0
+        contentModel.Status = 1
 
         return new Promise((resolve, reject) => {
             contentModel.save((err, content) => {
