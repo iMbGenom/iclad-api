@@ -28,5 +28,6 @@ router.get('/index', (req, res) => {
 router.get('/content', contentController.getContent)
 router.post('/content', contentController.addContent)
 router.put('/content/:_id', contentController.updateContent)
+router.delete('/content/:_id', contentController.deleteContent)
 
 module.exports = router
