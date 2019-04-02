@@ -1,0 +1,23 @@
+{
+  "name": "iclad-api",
+  "version": "1.0.0",
+  "description": "API for ICLAD",
+  "main": "app.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://radiliadi@gitlab.com/radiliadi/iclad-api.git"
+  },
+  "author": "radiliadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/radiliadi/iclad-api/issues"
+  },
+  "homepage": "https://gitlab.com/radiliadi/iclad-api#readme"
+}
