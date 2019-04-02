@@ -8,6 +8,11 @@ class ContentUseCase {
         this.req = req
     }
 
+    async getData() {
+        const data = await new ContentRepository().getContent(this.req.query)
+        return new Response(data.success, data.message, data.data, data.error)
+    }
+
     async addData() {
         const data = await new ContentRepository().addContent(this.req.body)
         return new Response(data.success, data.message, data.data, data.error)

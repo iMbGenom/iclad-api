@@ -4,14 +4,18 @@ const BaseRepository = require('../BaseRepository')
 
 class BannerRepository extends BaseRepository {
     
+    async getContent(params) {
+        console.log(params); return false
+    }
+
     async addContent(params) {
-        const contentModel = new ContentModel()
         let _result = {}
         _result.success = false
         _result.data = {}
         _result.message = 'Failed'
         _result.error = {}
 
+        const contentModel = new ContentModel()
         contentModel.Type = params.Type
         contentModel.CategoryId = params.CategoryId
         contentModel.Slug = params.Slug

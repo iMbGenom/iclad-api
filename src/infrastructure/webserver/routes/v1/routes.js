@@ -25,6 +25,7 @@ router.get('/index', (req, res) => {
     })
 })
 
+router.get('/content/list', contentController.getContent)
 router.post('/content/send', contentController.sendContent)
 
 module.exports = router

@@ -17,7 +17,7 @@ const contentSchema = mongoose.Schema({
         type: String
     },
     Body: {
-        type: Number
+        type: String
     },
     Caption: {
         type: String
