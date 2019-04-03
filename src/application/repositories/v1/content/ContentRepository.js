@@ -61,6 +61,7 @@ class BannerRepository extends BaseRepository {
         contentModel.UpdatedBy = params.UpdatedBy
         contentModel.CreatedAt = Math.round((new Date()).getTime() / 1000)
         contentModel.UpdatedAt = 0
+        contentModel.UpdatedBy = ''
         contentModel.Status = 1
 
         return new Promise((resolve, reject) => {
