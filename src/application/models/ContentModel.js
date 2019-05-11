@@ -41,6 +41,9 @@ const contentSchema = mongoose.Schema({
     Keyword: {
         type: String
     },
+    Url: {
+        type: String
+    },
     CreatedBy: {
         type: String
     },

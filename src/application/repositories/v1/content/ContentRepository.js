@@ -57,6 +57,7 @@ class BannerRepository extends BaseRepository {
         contentModel.VideoPath = params.VideoPath
         contentModel.VideoUrl = params.VideoUrl
         contentModel.Keyword = params.Keyword
+        contentModel.Url = params.Url
         contentModel.CreatedBy = params.CreatedBy
         contentModel.UpdatedBy = params.UpdatedBy
         contentModel.CreatedAt = Math.round((new Date()).getTime() / 1000)
