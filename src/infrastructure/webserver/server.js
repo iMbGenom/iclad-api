@@ -10,6 +10,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const routeMain = require('./routes/main')
 const routeVersion1 = require('./routes/v1/routes')
+const config = require('../../config')
 const RunningPort = process.env.RUNNING_PORT
 
 app.use(bodyParser.json()) /* allow express pars any json */
@@ -22,7 +23,7 @@ app.use(morgan('combined')) /* print out log user agent */
 // - - - M O N G O - - -
 // connection
 // mongoose.connect('mongodb://'+config.mongoDbHostDev+'/'+vivaDb, {
-mongoose.connect('mongodb://' + process.env.MONGO_HOST + '/' + process.env.MONGO_NAME, {
+mongoose.connect('mongodb://' + config.MONGO_HOST + '/' + config.MONGO_NAME, {
     useNewUrlParser: true
 })
 const db = mongoose.connection
@@ -30,7 +31,7 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 // connection open
 db.once('open', () => {
-    console.log(`Connected to Mongo Local (` + process.env.MONGO_NAME + `) at: ${new Date()}`)
+    console.log(`Connected to Mongo Local (` + config.MONGO_NAME + `) at: ${new Date()}`)
 })
 // - - - E N D  M O N G O - - -
 
