@@ -33,6 +33,12 @@ db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
     console.log(`Connected to Mongo Local (` + config.MONGO_NAME + `) at: ${new Date()}`)
 })
+
+// OR from next portofolio
+// mongoose.connect(config.DB_URI, {
+//     useNewUrlParser: true
+// }).then(() => console.log('connected'))
+// .catch(err => console.log(err))
 // - - - E N D  M O N G O - - -
 
 class ExpressServer {
